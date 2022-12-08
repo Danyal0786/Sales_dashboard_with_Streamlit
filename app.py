@@ -1,6 +1,7 @@
 import pandas as pd
 import plotly.express as px
 import streamlit as st
+import streamlit.components.v1 as stc 
 import numpy as np
 
 
@@ -9,6 +10,14 @@ st.set_page_config(
     page_icon=":bar_chart:",
     layout="wide"
 )
+
+
+html_temp = """
+		<div style="background-color:#009688;padding:10px;border-radius:10px">
+		<h1 style="color:white;text-align:center;">Sales Dashboard </h1>
+		<h4 style="color:white;text-align:center;">Estimating total sales by each category</h4>
+		</div>
+		"""
 
 # ---- READ EXCEL ----
 @st.cache
@@ -27,7 +36,9 @@ def get_data_from_excel():
 
 df = get_data_from_excel()
 
+stc.html(html_temp) 
 st.dataframe(df)
+
 
 # ----------Sidebar------------
 
